@@ -31,9 +31,9 @@ class Request {
 	Request(Method method, String apiKey) {
 		this.parameters = new TreeMap<String,String>();
 		this.baseUrl = method.getBaseUrl();
-		this.put(RequestParameter.FORMAT,"json");
 		this.put(RequestParameter.API_KEY,apiKey);
 		if (!(method == Method.NO_METHOD)) {
+			this.put(RequestParameter.FORMAT, "json");
 			this.put(RequestParameter.METHOD,method.toString());
 		}
 	}
@@ -58,7 +58,7 @@ class Request {
 		this.parameters.put(parameter.toString(),method.toString());
 	}
 		
-	String getUrl() throws RtmApiException { //devo metterla qui perchè il signed me la genera
+	String getUrl() throws RtmApiException { 
 		String url = this.baseUrl + "?";
 		String query = "";
 		//come ottenere un iteratore non ordinato? Mi serve davvero? NO!
